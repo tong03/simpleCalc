@@ -19,42 +19,69 @@ body{
 .panels {
     display: flex;
     flex: 1;
+    flex-direction: column;
 
     align-self: stretch;
-    min-height: 100px;
+    min-height: 80px;
     width: auto;
-    border: 5px solid black;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    border-left: none;
+    border-right: none;
+
+    background-color: black;
 }
-/*
+
 .display {
     display: flex;
-    align-self: stretch;
-    height: 100px;
-    width: auto;
-    border: 5px solid black;
-}
+    flex: 0;
+    align-items: flex-end;
+    justify-content: center;
 
-.section1 {
-    display: flex;
-    align-self: stretch;
-    height: 100px;
-    width: auto;
+    background-color: darkgrey;
     border: 5px solid black;
-}
-
-.section2 {
-    display: flex;
-    align-self: stretch;
-    height: 100px;
-    width: auto;
-    border: 5px solid black;
+    font-size: 75px;
+    padding-right: 10px;
 }
 
 .section3 {
-    display: flex;
-    align-self: stretch;
-    height: 100px;
-    width: auto;
-    border: 5px solid black;
+    flex: 0.5;
 }
-*/
+
+.rows {
+    display: flex;
+    flex: 1;
+
+    min-height: 50px;
+    border: 1px solid black;
+}
+
+.buttons {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid black;
+    border-radius: 5px;
+    min-width: 80px;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.button17 {
+    flex: 2;
+}
+
+.buttons.button4, .buttons.button8, .buttons.button12,
+ .buttons.button16, .buttons.button19 {
+    background-color: orange;
+}
+
+.buttons.button1, .buttons.button2, .buttons.button3 {
+    background-color: royalblue;
+}
+
+.buttons {
+    background-color: darkcyan;
+}
