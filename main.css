@@ -75,13 +75,28 @@ body{
 
 .buttons.button4, .buttons.button8, .buttons.button12,
  .buttons.button16, .buttons.button19 {
-    background-color: orange;
+    background-color: darkorange;
+}
+
+.buttons.button4:active, .buttons.button8:active, 
+.buttons.button12:active,.buttons.button16:active,
+.buttons.button19:active {
+    background-color: rgb(255, 179, 38);
 }
 
 .buttons.button1, .buttons.button2, .buttons.button3 {
     background-color: royalblue;
 }
 
+.buttons.button1:active, .buttons.button2:active, 
+.buttons.button3:active {
+    background-color: rgb(107, 141, 245);
+}
+
 .buttons {
     background-color: darkcyan;
+}
+
+.buttons:active {
+    background-color: rgb(0, 183, 183);
 }
