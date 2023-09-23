@@ -15,8 +15,11 @@ function divideNum(a,b){
 }
 
 function operate(operator, a, b){
+    console.log("Operate function was called...");
+    let total = 0;
     if (operator == '+'){
-        addNum(a,b);
+        console.log("It's an addition...");
+        total = addNum(a,b);
     }
     else if (operator == '-'){
         subtractNum(a,b);
@@ -27,20 +30,27 @@ function operate(operator, a, b){
     else if (operator == '/'){
         divideNum(a,b);
     }
+    return total;
 }
 
+/*
 console.log(addNum(2,7));
 console.log(subtractNum(10,7));
 console.log(multiplyNum(2,7));
 console.log(divideNum(24,3));
+*/
 
 let streamLine = "";
+let firstNum = 0;
+let secondNum = 0;
+let operator = "";
 
 const display = document.querySelector('.display');
 const clearAll = document.querySelector('.button1');
 
 // Operators
 const addB = document.querySelector('.button16');
+const equalB = document.querySelector('.button19');
 
 // Numbers
 const num7 = document.querySelector('.button5');
@@ -56,17 +66,27 @@ const num0 = document.querySelector('.button17');
 
 // Event Listeners for the Buttons
 
-/* !!!TODO!!! Still Need to Implement
-addB.addEventListener('click', () => {
-    const firstNum = streamLine;
-    streamLine = "";
-    const active = True;
-    while(active){
-        const secondNum = streamLine;
-        
+equalB.addEventListener('click', () => {
+    if (operator == ""){
+        return;
     }
+    console.log("Current operator: " + operator);
+    secondNum = parseInt(streamLine);
+    console.log("Second Num: " + secondNum);
+    streamLine = operate(operator, firstNum, secondNum);
+    console.log("Result is: " + streamLine);
+    display.textContent = streamLine;
+}) 
+
+addB.addEventListener('click', () => {
+    operator = '+';
+    firstNum = parseInt(streamLine);
+    console.log("First Num: " + firstNum);
+    streamLine = "";
 })
-*/
+
+
+// Clear screen
 clearAll.addEventListener('click', () => {
     streamLine = "";
     display.textContent = 0;
