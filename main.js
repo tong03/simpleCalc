@@ -11,7 +11,7 @@ function multiplyNum(a,b){
 }
 
 function divideNum(a,b){
-    return (a * 1.0)/b;
+    return a/b;
 }
 
 function operate(operator, a, b){
@@ -43,7 +43,7 @@ console.log(multiplyNum(2,7));
 console.log(divideNum(24,3));
 */
 
-let streamLine = "";
+let streamLine = '0';
 let firstNum = 0;
 let secondNum = 0;
 let operator = "";
@@ -58,7 +58,7 @@ const multiplyB = document.querySelector('.button8');
 const divideB = document.querySelector('.button4');
 const equalB = document.querySelector('.button19');
 const percentB = document.querySelector('.button3');
-
+const decimalB = document.querySelector('.button18');
 
 // Numbers
 const num7 = document.querySelector('.button5');
@@ -73,6 +73,26 @@ const num3 = document.querySelector('.button15');
 const num0 = document.querySelector('.button17');
 
 // Event Listeners for the Operation Buttons
+
+decimalB.addEventListener('click', () => {
+    // Does not do anything if length already is at max
+    if(streamLine.length >= 10){
+        return;
+    }
+    // Does not do anything if there's already a decimal in the stream
+    else if (String(streamLine).includes('.')){
+        return;
+    }
+    // If pressed before an integer is on screen
+    if(streamLine == '0'){
+        streamLine += '.';
+        display.textContent = streamLine;
+        return;
+    }
+    // If pressed after an integer is on screen
+    streamLine += '.';
+    display.textContent = streamLine;
+})
 
 percentB.addEventListener('click', () => {
     currentNum = parseFloat(streamLine);
@@ -91,6 +111,7 @@ equalB.addEventListener('click', () => {
     console.log("Second Num: " + secondNum);
     streamLine = operate(operator, firstNum, secondNum);
     console.log("Result is: " + streamLine);
+    console.log("streamLine after an operation is a: " + typeof streamLine);
     display.textContent = streamLine;
 }) 
 
@@ -98,34 +119,34 @@ addB.addEventListener('click', () => {
     operator = '+';
     firstNum = parseFloat(streamLine);
     console.log("First Num: " + firstNum);
-    streamLine = "";
+    streamLine = "0";
 })
 
 minusB.addEventListener('click', () => {
     operator = '-';
     firstNum = parseFloat(streamLine);
     console.log("First Num: " + firstNum);
-    streamLine = "";
+    streamLine = "0";
 })
 
 divideB.addEventListener('click', () => {
     operator = '/';
     firstNum = parseFloat(streamLine);
     console.log("First Num: " + firstNum);
-    streamLine = "";
+    streamLine = "0";
 })
 
 multiplyB.addEventListener('click', () => {
     operator = '*';
     firstNum = parseFloat(streamLine);
     console.log('First Num: ' + firstNum);
-    streamLine = "";
+    streamLine = "0";
 })
 
 // Clear screen
 clearAll.addEventListener('click', () => {
-    streamLine = "";
-    display.textContent = 0;
+    streamLine = '0';
+    display.textContent = streamLine;
 })
 
 num0.addEventListener('click', () => {
@@ -145,6 +166,10 @@ num1.addEventListener('click', () => {
     if(streamLine.length >= 10){
         return;
     }
+    else if (streamLine == '0'){
+        streamLine = "";
+    }
+    
     streamLine += "1";
     display.textContent = streamLine;
 })
@@ -152,6 +177,9 @@ num1.addEventListener('click', () => {
 num2.addEventListener('click', () => {
     if(streamLine.length >= 10){
         return;
+    }
+    else if (streamLine == '0'){
+        streamLine = "";
     }
     streamLine += "2";
     display.textContent = streamLine;
@@ -161,6 +189,9 @@ num3.addEventListener('click', () => {
     if(streamLine.length >= 10){
         return;
     }
+    else if (streamLine == '0'){
+        streamLine = "";
+    }
     streamLine += "3";
     display.textContent = streamLine;
 })
@@ -168,6 +199,9 @@ num3.addEventListener('click', () => {
 num4.addEventListener('click', () => {
     if(streamLine.length >= 10){
         return;
+    }
+    else if (streamLine == '0'){
+        streamLine = "";
     }
     streamLine += "4";
     display.textContent = streamLine;
@@ -177,6 +211,9 @@ num5.addEventListener('click', () => {
     if(streamLine.length >= 10){
         return;
     }
+    else if (streamLine == '0'){
+        streamLine = "";
+    }
     streamLine += "5";
     display.textContent = streamLine;
 })
@@ -184,6 +221,9 @@ num5.addEventListener('click', () => {
 num6.addEventListener('click', () => {
     if(streamLine.length >= 10){
         return;
+    }
+    else if (streamLine == '0'){
+        streamLine = "";
     }
     streamLine += "6";
     display.textContent = streamLine;
@@ -193,6 +233,9 @@ num7.addEventListener('click', () => {
     if(streamLine.length >= 10){
         return;
     }
+    else if (streamLine == '0'){
+        streamLine = "";
+    }
     streamLine += "7";
     display.textContent = streamLine;
 })
@@ -201,6 +244,9 @@ num8.addEventListener('click', () => {
     if(streamLine.length >= 10){
         return;
     }
+    else if (streamLine == '0'){
+        streamLine = "";
+    }
     streamLine += "8";
     display.textContent = streamLine;
 })
@@ -208,6 +254,9 @@ num8.addEventListener('click', () => {
 num9.addEventListener('click', () => {
     if(streamLine.length >= 10){
         return;
+    }
+    else if (streamLine == '0'){
+        streamLine = "";
     }
     streamLine += "9";
     display.textContent = streamLine;
