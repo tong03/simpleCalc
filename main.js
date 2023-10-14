@@ -11,7 +11,7 @@ function multiplyNum(a,b){
 }
 
 function divideNum(a,b){
-    return a/b;
+    return (a * 1.0)/b;
 }
 
 function operate(operator, a, b){
@@ -22,13 +22,16 @@ function operate(operator, a, b){
         total = addNum(a,b);
     }
     else if (operator == '-'){
-        subtractNum(a,b);
+        console.log("It's subtraction...")
+        total = subtractNum(a,b);
     }
     else if (operator == '*'){
-        multiplyNum(a,b);
+        console.log("It's multiplication...");
+        total = multiplyNum(a,b);
     }
     else if (operator == '/'){
-        divideNum(a,b);
+        console.log("It's division...")
+        total = divideNum(a,b);
     }
     return total;
 }
@@ -50,7 +53,12 @@ const clearAll = document.querySelector('.button1');
 
 // Operators
 const addB = document.querySelector('.button16');
+const minusB = document.querySelector('.button12');
+const multiplyB = document.querySelector('.button8');
+const divideB = document.querySelector('.button4');
 const equalB = document.querySelector('.button19');
+const percentB = document.querySelector('.button3');
+
 
 // Numbers
 const num7 = document.querySelector('.button5');
@@ -64,14 +72,22 @@ const num2 = document.querySelector('.button14');
 const num3 = document.querySelector('.button15');
 const num0 = document.querySelector('.button17');
 
-// Event Listeners for the Buttons
+// Event Listeners for the Operation Buttons
+
+percentB.addEventListener('click', () => {
+    currentNum = parseFloat(streamLine);
+    pNum = currentNum / 100.0;
+    console.log(pNum);
+    streamLine = pNum;
+    display.textContent = streamLine;
+})
 
 equalB.addEventListener('click', () => {
     if (operator == ""){
         return;
     }
     console.log("Current operator: " + operator);
-    secondNum = parseInt(streamLine);
+    secondNum = parseFloat(streamLine);
     console.log("Second Num: " + secondNum);
     streamLine = operate(operator, firstNum, secondNum);
     console.log("Result is: " + streamLine);
@@ -80,11 +96,31 @@ equalB.addEventListener('click', () => {
 
 addB.addEventListener('click', () => {
     operator = '+';
-    firstNum = parseInt(streamLine);
+    firstNum = parseFloat(streamLine);
     console.log("First Num: " + firstNum);
     streamLine = "";
 })
 
+minusB.addEventListener('click', () => {
+    operator = '-';
+    firstNum = parseFloat(streamLine);
+    console.log("First Num: " + firstNum);
+    streamLine = "";
+})
+
+divideB.addEventListener('click', () => {
+    operator = '/';
+    firstNum = parseFloat(streamLine);
+    console.log("First Num: " + firstNum);
+    streamLine = "";
+})
+
+multiplyB.addEventListener('click', () => {
+    operator = '*';
+    firstNum = parseFloat(streamLine);
+    console.log('First Num: ' + firstNum);
+    streamLine = "";
+})
 
 // Clear screen
 clearAll.addEventListener('click', () => {
