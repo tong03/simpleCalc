@@ -33,15 +33,18 @@ function operate(operator, a, b){
         console.log("It's division...")
         total = divideNum(a,b);
     }
-    return total;
-}
+    // see if total is a decimal > 8 digits, including 0 and dot
+    if(String(total).length > 8){
+        // Start rounding it to 8 decimals place
+        let factor = Math.pow(10, 8);
+        total = Math.round(total*factor)/factor;
+    }
 
-/*
-console.log(addNum(2,7));
-console.log(subtractNum(10,7));
-console.log(multiplyNum(2,7));
-console.log(divideNum(24,3));
-*/
+    return total;
+
+    // still cannot account for large numbers with decimals, will run
+    // off screen stil
+}
 
 let streamLine = '0';
 let firstNum = 0;
@@ -59,6 +62,7 @@ const divideB = document.querySelector('.button4');
 const equalB = document.querySelector('.button19');
 const percentB = document.querySelector('.button3');
 const decimalB = document.querySelector('.button18');
+const signB = document.querySelector('.button2');
 
 // Numbers
 const num7 = document.querySelector('.button5');
@@ -74,6 +78,17 @@ const num0 = document.querySelector('.button17');
 
 // Event Listeners for the Operation Buttons
 
+signB.addEventListener('click', () => {
+    // Do nothing if streamLine is 0
+    if(streamLine == '0'){
+        return;
+    }
+    // convert to float and multiply by -1
+    streamLine = parseFloat(streamLine) * -1;
+    // convert back to string to display on screen
+    display.textContent = String(streamLine);
+})
+
 decimalB.addEventListener('click', () => {
     // Does not do anything if length already is at max
     if(streamLine.length >= 10){
@@ -83,7 +98,7 @@ decimalB.addEventListener('click', () => {
     else if (String(streamLine).includes('.')){
         return;
     }
-    // If pressed before an integer is on screen
+    // If pressed before an integer is on screen and there's only 0
     if(streamLine == '0'){
         streamLine += '.';
         display.textContent = streamLine;
@@ -92,6 +107,7 @@ decimalB.addEventListener('click', () => {
     // If pressed after an integer is on screen
     streamLine += '.';
     display.textContent = streamLine;
+    // There is still float precision error when adding 1.63 + 0.47 
 })
 
 percentB.addEventListener('click', () => {
@@ -150,8 +166,8 @@ clearAll.addEventListener('click', () => {
 })
 
 num0.addEventListener('click', () => {
-    if(display.textContent == '0'){
-        display.textContent = display.textContent;
+    if(streamLine == '0'){
+        display.textContent = streamLine;
     }
     else if(streamLine.length >= 10){
         return;
