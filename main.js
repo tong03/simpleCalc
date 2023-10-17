@@ -76,6 +76,20 @@ const num2 = document.querySelector('.button14');
 const num3 = document.querySelector('.button15');
 const num0 = document.querySelector('.button17');
 
+// Decoration Purposes on the buttons
+const operationBtns = document.querySelectorAll(".buttons");
+// decided to select all buttons so that they can get the class remove
+// this helps remove the .active class when any other element is clicked
+operationBtns.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+        operationBtns.forEach(f => f.classList.remove('active'));
+        e.target.classList.toggle('active');
+        // while every button receives active class, only the specified
+        // class chain of .operations.active will see the effect
+    });
+})
+
+
 // Event Listeners for the Operation Buttons
 
 signB.addEventListener('click', () => {

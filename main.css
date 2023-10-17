@@ -46,6 +46,7 @@ body{
 
 .section3 {
     flex: 0.5;
+    border-bottom: 2px;
 }
 
 .rows {
@@ -99,4 +100,8 @@ body{
 
 .buttons:active {
     background-color: rgb(0, 183, 183);
+}
+
+.operations.active {
+    background-color: rgb(254, 222, 162);
 }
